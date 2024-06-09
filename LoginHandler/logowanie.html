@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pole logowania</title>
+    <link rel=stylesheet href=LoginHandler/LoginStyles/logowanie.css type="text/css">
+</head>
+<body>
+    <form method="post" action="Verifications/weryfikator_logowania.php">
+        <fieldset>
+            <div class="logo">Logowanie</div>
+            <div class="logowanieFlex">
+                <div class="loginDiv">
+                    <label for="login" id="loginLabel"></label>
+                    <input type="text" id="login" name="login" placeholder="Login" required>
+                </div>
+                <div class="passwordDiv">
+                    <label for="userPassword"></label>
+                    <input type="password" id="userPassword" name="userPassword" placeholder="Password" required>
+                </div>
+                <div class="submitButton">
+                    <button type="submit">Zaloguj</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>

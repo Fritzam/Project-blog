@@ -10,7 +10,12 @@
 <header>
     <span><a href="Logika/logowanie.html">Zaloguj sie</a></span>
     <span><a href="Logika/rejestracja.html">Zarejestruj sie</a></span>
-    <span><</span>
+    <?php
+    session_start();
+        if(isset($_SESSION['login'])) {
+            echo "<span>Zalogowano jako: " . $_SESSION['login'] . "</span>";
+        }
+    ?>
     <hr>
 </header>
 <body>

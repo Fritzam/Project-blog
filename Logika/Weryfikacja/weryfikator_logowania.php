@@ -1,13 +1,13 @@
-<?php
-session_start();
-try {
-    $connection = mysqli_connect("127.0.0.1", "root", "", "bazablog");
-    $login = $_POST['login'];
-    $password = $_POST['userPassword'];
+    <?php
+    session_start();
 
-    try {
+    if ($connection = mysqli_connect("127.0.0.1", "root", "", "bazablog")) {
+
+        $login = mysqli_escape_string($connection, $_POST['login']);
+        $password = mysqli_escape_string($connection, $_POST['userPassword']);
+
         $user = mysqli_query($connection, "SELECT * from user WHERE login = '$login'");
-        $result = mysqli_fetch_row($user);
+        $result = mysqli_fetch_assoc($user);
         if ($login == $result[1]) {
             if (password_verify($password, $result[2])) {
                 echo "Jesteś zalogowany jako: " . $result[1];
@@ -19,13 +19,12 @@ try {
                 echo "<a href='../logowanie.html'>Kliknij, aby spróbować ponownie</a>";
             }
         } else {
-            echo "Taki user nie istnieje";
+            echo "Wskazany użytkownik nie istnieje.";
+            echo "<p><a href='../../index.php'>Kliknij, aby wrócić do strony głównej</p>";
         }
-    } catch (Exception $e) {
-        echo "Taki user nie istnieje";
+    } else {
+        die(mysqli_connect_error());
     }
-} catch(Exception $e) {
-    echo "Przydarzył się niespodziewany błąd.";
-}
+
 
 

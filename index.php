@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,13 +11,17 @@
     <title>Blog</title>
 </head>
 <header>
-    <span><a href="Logika/logowanie.html">Zaloguj sie</a></span>
-    <span><a href="Logika/rejestracja.html">Zarejestruj sie</a></span>
     <?php
-    session_start();
-        if(isset($_SESSION['login'])) {
-            echo "<span>Zalogowano jako: " . $_SESSION['login'] . "</span>";
-        }
+    if(isset($_SESSION['login'])) {
+        if ($_SESSION['login'] == 'Owner')
+        echo "<span><a href='Logika/wylogowanie.php'>Wyloguj się </a></span>";
+        echo "<span>Zalogowano jako: " . $_SESSION['login'] . "</span>";
+        echo "<span><a href='Logika/stworzPost.html'>Dodaj posta</a></span>";
+    } else {
+        echo "<span><a href='Logika/logowanie.html'>Zaloguj się</a></span>";
+        echo "<span><a href='Logika/rejestracja.html'>Zarejestruj się</a></span>";
+    }
+
     ?>
     <hr>
 </header>

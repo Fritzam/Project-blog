@@ -5,21 +5,19 @@
     <title>Stworz posta</title>
 </head>
 <body>
-    <form>
+    <form action="Weryfikacja/obsluga_postowania.php" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend>Tworzenie posta</legend>
-            <form action="Weryfikacja/obsluga_postowania.php" method="post" enctype="multipart/form-data">
-                <label for="tytul">Tytuł posta: </label>
-                <input type="text" id="tytul" name="tytul" minlength="5" maxlength="20" placeholder="tytul posta" required>
-                <br>
-                <label for="obrazek">Obrazek: </label>
-                <input type="file" id="obrazek" name="obrazek" accept="image/*" placeholder="obrazek">
-                <br>
-                <label for="tresc">Tresc posta: </label>
-                <input type="text" id="tresc" name="tresc" minlength="20" maxlength="400" size="30" required>
-                <br>
-                <button type="submit">Stworz posta</button>
-            </form>
+            <label for="tytul">Tytuł posta: </label>
+            <input type="text" id="tytul" name="tytul" minlength="5" maxlength="20" placeholder="tytul posta" required>
+            <br>
+            <label for="obrazek">Obrazek: </label>
+            <input type="file" id="obrazek" name="obrazek" accept="image/*" placeholder="obrazek">
+            <br>
+            <label for="tresc">Tresc posta: </label>
+            <input type="text" id="tresc" name="tresc" minlength="6" maxlength="400" size="30" required>
+            <br>
+            <button type="submit">Stworz posta</button>
         </fieldset>
     </form>
 </body>

@@ -14,6 +14,7 @@
                 echo "<br>";
                 echo "<a href='../../index.php'>Kliknij, aby przejsc do strony głównej.</a>";
                 $_SESSION['login'] = $query_result['login'];
+                $_SESSION['permission'] = $query_result['permission'];
             } else {
                 echo "Hasła się nie zgadzają";
                 echo "<a href='../logowanie.html'>Kliknij, aby spróbować ponownie</a>";

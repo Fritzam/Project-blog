@@ -50,9 +50,29 @@ if (isset($_GET['nav'])) {
 
 $entry = $_SESSION['post'];
 $last_entry = $posty[$entry];
+$_SESSION['obecnyPost'] = $last_entry;
 include ("Posty/$last_entry/post.html");
-?>
 
+echo "<hr>";
+echo '<form action="Logika/Weryfikacja/obsluga_komentarzy.php" method="post">Komentarze: <br>';
+echo "<br>";
+$komentarze = "Posty/$last_entry/komentarze";
+for ($i = count(scandir($komentarze)); $i > 2 ; $i--) {
+    include ($komentarze . "/" . scandir($komentarze)[$i - 1]);
+    echo "<br>";
+}
+echo '<hr>';
+if (!isset($_SESSION['login'])) {
+    echo '<label for="username">Proszę podać nick: </label>';
+    echo '<input type="text" id="username" name="username" maxlength="15" required><br>';
+} else {
+    echo '<span>Dodajesz komentarz jako: ' . $_SESSION['login'] . '</span><br>';
+}
+echo '<label for="tresc">Proszę wpisać komentarz: </label>';
+echo '<input type="text" id="tresc" name="tresc" maxlength="250" required><br>';
+echo '<button type="submit">Dodaj komentarz</button>';
+echo '</form>';
+?>
     <a href="index.php?nav=prev">Poprzedni post</a>
     <a href="index.php?nav=next">Nastepny post</a>
 

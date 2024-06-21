@@ -35,7 +35,26 @@ session_start();
 </header>
 <body>
 <?php
-include ("Posty/2024-06-19 22.53.26Jam_jest_Katunka/Jam jest Katunka.html");
+$posty = scandir("Posty/");
+if (!isset($_SESSION['post'])) {
+    $_SESSION['post'] = count($posty) - 1;
+}
+
+if (isset($_GET['nav'])) {
+    if ($_GET['nav'] == 'next' && $_SESSION['post'] < count($posty) - 1) {
+        $_SESSION['post']++;
+    } elseif ($_GET['nav'] == 'prev' && $_SESSION['post'] > 2) {
+        $_SESSION['post']--;
+    }
+}
+
+$entry = $_SESSION['post'];
+$last_entry = $posty[$entry];
+include ("Posty/$last_entry/post.html");
 ?>
+
+    <a href="index.php?nav=prev">Poprzedni post</a>
+    <a href="index.php?nav=next">Nastepny post</a>
+
 </body>
 </html>
